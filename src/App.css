@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-size: 15px;
+    font-family: 'League Spartan', sans-serif;
+}
+.App {
+    max-width: 1440px;
+    height: 100vh;
+}
+
+.header {
+    background: url(../public/images/bg-header-desktop.svg);
+    background-color: hsl(180, 29%, 50%);
+    height: 20%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
