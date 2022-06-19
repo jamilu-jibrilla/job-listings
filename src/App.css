@@ -51,14 +51,14 @@
 .header .header-card a {
     color: hsl(180, 29%, 50%);
     font-size: 18px;
-}
+6
 .none {
     display: none !important;
 }
 
 @media screen and (max-width: 765px) {
     * {
-        font-size: 18px;
+        font-size: 17px;
     }
     .header {
         margin-bottom: 90px;
