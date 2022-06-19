@@ -5,22 +5,24 @@ const Card = ({item, handleRoleFilter, handleLevelFilter, handleLanguageFilter ,
     return(
         <div className="Card">
             <section className="first-row">
-                <img src={item.logo} alt="" />
-                <div className='first-row-details'>
-                    <div className='left-tags'>
-                        <span>{item.company}</span>
-                        {item.new ? <span  className='new'>NEW!</span> : ""}
-                        {item.featured ? <span  className='featured'>FEATURED</span> : ""}
-                    </div>
-                    <div>
-                        <h4>{item.position}</h4>
-                    </div>
-                    <div className='left-details'>
-                        <span>{item.postedAt}</span>
-                        <span>.</span>
-                        <span>{item.contract}</span>
-                        <span>.</span>
-                        <span>{item.location}</span>
+                <div className='card-wrapper'>
+                    <img src={item.logo} alt="" />
+                    <div className='first-row-details'>
+                        <div className='left-tags'>
+                            <span>{item.company}</span>
+                            {item.new ? <span  className='new'>NEW!</span> : ""}
+                            {item.featured ? <span  className='featured'>FEATURED</span> : ""}
+                        </div>
+                        <div>
+                            <h4>{item.position}</h4>
+                        </div>
+                        <div className='left-details'>
+                            <span>{item.postedAt}</span>
+                            <span>.</span>
+                            <span>{item.contract}</span>
+                            <span>.</span>
+                            <span>{item.location}</span>
+                        </div>
                     </div>
                 </div>
             </section>

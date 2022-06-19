@@ -3,28 +3,38 @@ import './App.css'
 import Card from './components/Card'
 import {data} from './data.js'
 function App() {
+  
   let [filterBy, setFilterBy] = useState({
     role: "",
     level: "",
     lang: [""],
-    tool: [""]  
+    tool: [""],
+    values: [],
+    display: false
   });
   
   const handleRoleFilter = (e) => {
+    let val = e.target.textContent
     setFilterBy({
       ... filterBy,
-      role: e.target.textContent
+      role: val,
+      values: filterBy.values.includes(val) ? [...filterBy.values] : [...filterBy.values, val],
+      display: true
     })
   }
 
   const handleLevelFilter = (e) => {
+    let val = e.target.textContent
     setFilterBy({
       ...filterBy,
-      level: e.target.textContent
+      level: val,
+      values: filterBy.values.includes(val) ? [...filterBy.values] : [...filterBy.values, val],
+      display: true
     }) 
   }
 
   const handleLanguageFilter = (e) => {
+    let val = e.target.textContent
     setFilterBy({
       ...filterBy,
       lang: [ filterBy.lang = filterBy.lang.filter(item => item !== "")]
@@ -32,11 +42,14 @@ function App() {
 
     setFilterBy({
       ...filterBy,
-      lang: [...filterBy.lang, e.target.textContent]
+      lang: [...filterBy.lang, val],
+      values: filterBy.values.includes(val) ? [...filterBy.values] : [...filterBy.values, val],
+      display: true
     }) 
   }
 
   const handleToolFilter = (e) => {
+    let val = e.target.textContent
     setFilterBy({
       ...filterBy,
       tool: [filterBy.tool = filterBy.tool.filter(item => item !== "")]
@@ -44,13 +57,13 @@ function App() {
 
     setFilterBy({
       ...filterBy,
-      tool: [...filterBy.tool, e.target.textContent]
+      tool: [...filterBy.tool, val],
+      values: filterBy.values.includes(val) ? [...filterBy.values] : [...filterBy.values, val],
+      display: true
     }) 
   }
 
 
-
-  console.log(filterBy)
   let filteredReturn = data.filter(item => {
     return (
             item.role.includes(filterBy.role) &&
@@ -62,6 +75,14 @@ function App() {
   return (
     <div className="App">
       <header className='header'>
+        <div className={`${filterBy.display ? "header-card" : "none"} `}>
+          <div>
+            {filterBy.values.map(item=> (
+              <h4>{item}</h4>
+            ))}
+          </div>
+          <p onClick={()=>location.reload()}><a href="">clear</a></p>
+        </div>
       </header>
       <div className="container">
         {filteredReturn.map(item => (
