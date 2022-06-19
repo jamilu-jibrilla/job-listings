@@ -51,21 +51,21 @@
 .header .header-card a {
     color: hsl(180, 29%, 50%);
     font-size: 18px;
-6
+}
 .none {
     display: none !important;
 }
 
 @media screen and (max-width: 765px) {
     * {
-        font-size: 17px;
+        font-size: 15px;
     }
     .header {
         margin-bottom: 90px;
     }
     
     .header .header-card {
-        height: 150px;
+        height: auto;
         z-index: 1;
         width: 90%;
         bottom: -50px;
@@ -84,8 +84,8 @@
     margin: 6px;
     color: hsl(180, 29%, 50%);
     height: 30px;
-    width: 70px;
-    font-size: 15px;
+    width: 95px;
+    font-size: 17px;
     border-radius: 4px;
 }
 }
