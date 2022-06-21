@@ -104,7 +104,7 @@
 @media screen and (max-width:700px) {
     .Card {
         flex-direction: column;
-        margin-top: 2.8rem;
+        margin-top: 3rem;
         padding: 1rem;
         width: 90%;
         height: 240px;
