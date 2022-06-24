@@ -3,7 +3,7 @@ const Card = ({item, handleRoleFilter, handleLevelFilter, handleLanguageFilter ,
 
 
     return(
-        <div className="Card">
+        <div className={`Card ${item.new && item.featured ? 'br' : ""}`}>
             <section className="first-row">
                 <div className='card-wrapper'>
                     <img src={item.logo} alt="" />

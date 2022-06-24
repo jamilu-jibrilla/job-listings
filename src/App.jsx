@@ -9,8 +9,7 @@ function App() {
     level: "",
     lang: [""],
     tool: [""],
-    values: [],
-    display: false
+    values: []
   });
   
   const handleRoleFilter = (e) => {
@@ -19,7 +18,6 @@ function App() {
       ... filterBy,
       role: val,
       values: filterBy.values.includes(val) ? [...filterBy.values] : [...filterBy.values, val],
-      display: true
     })
   }
 
@@ -44,7 +42,6 @@ function App() {
       ...filterBy,
       lang: [...filterBy.lang, val],
       values: filterBy.values.includes(val) ? [...filterBy.values] : [...filterBy.values, val],
-      display: true
     }) 
   }
 
@@ -59,10 +56,41 @@ function App() {
       ...filterBy,
       tool: [...filterBy.tool, val],
       values: filterBy.values.includes(val) ? [...filterBy.values] : [...filterBy.values, val],
-      display: true
     }) 
   }
 
+const handleClear=()=> {
+  setFilterBy({
+    role: "",
+    level: "",
+    lang: [""],
+    tool: [""],
+    values: []
+  })
+}
+
+const handleItemClear=(e)=> {
+  for(let key in filterBy) {
+    if(key === "role" || key === "level" || key === "lang" || key === "tool") {
+      if(filterBy[key].includes(e.target.className)) {
+       if(typeof filterBy[key] === "string") {
+          setFilterBy({
+            ... filterBy,
+            [key]: "",
+            values: filterBy.values.filter(item=> item != e.target.className)
+          })
+        } else if(typeof filterBy[key] === "object") {
+          setFilterBy({
+            ... filterBy,
+            [key]: filterBy[key].filter(item => item !== e.target.className),
+            values: filterBy.values.filter(item=> item != e.target.className)
+          })
+        }
+      }
+    }
+  }
+
+}
 
   let filteredReturn = data.filter(item => {
     return (
@@ -75,13 +103,13 @@ function App() {
   return (
     <div className="App">
       <header className='header'>
-        <div className={`${filterBy.display ? "header-card" : "none"} `}>
+        <div className={`${filterBy.values.length ? "header-card" : "none"} `}>
           <div>
             {filterBy.values.map(item=> (
-              <h4>{item}</h4>
+              <h4>{item} <span className={item} onClick={handleItemClear}>X</span> </h4>
             ))}
           </div>
-          <p onClick={()=>location.reload()}><a href="">clear</a></p>
+          <p onClick={handleClear}>clear</p>
         </div>
       </header>
       <div className="container">
